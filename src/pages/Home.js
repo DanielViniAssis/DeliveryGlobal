@@ -3,7 +3,7 @@ import products from '../data/products';
 import ProductCard from '../components/ProductCard';
 import promoPizza from '../assets/images/MenuCardapioPromocional.png'
 import promoLanche from '../assets/images/promoComboLanche.png'
-import promoPasteis from '../assets/images/promoPasteis.png'
+import promoPasteis from '../assets/images/promoPastel.png'
 const Home = ({ addToCart }) => {
   const highlights = products.slice(0, 3); // destaques do dia
 
