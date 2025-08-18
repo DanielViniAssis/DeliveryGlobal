@@ -1,7 +1,9 @@
 import React from 'react';
 import products from '../data/products';
 import ProductCard from '../components/ProductCard';
-
+import promoPizza from '../assets/images/MenuCardapioPromocional.png'
+import promoLanche from '../assets/images/promoComboLanche.png'
+import promoPasteis from '../assets/images/promoPasteis.png'
 const Home = ({ addToCart }) => {
   const highlights = products.slice(0, 3); // destaques do dia
 
@@ -16,11 +18,11 @@ const Home = ({ addToCart }) => {
         ))}
       </div>
 
-      <h2>Banners promocionais</h2>
+      <h2>Promoções</h2>
       <div style={{ display: 'flex', overflowX: 'auto' }}>
-        <img src="banner1.jpg" alt="Promo 1" style={{ width: '300px', margin: '5px' }} />
-        <img src="banner2.jpg" alt="Promo 2" style={{ width: '300px', margin: '5px' }} />
-        <img src="banner3.jpg" alt="Promo 3" style={{ width: '300px', margin: '5px' }} />
+        <img src={promoPizza} alt="Promo 1" style={{ width: '300px', margin: '5px' }} />
+        <img src={promoLanche} alt="Promo 2" style={{ width: '300px', margin: '5px' }} />
+        <img src={promoPasteis} alt="Promo 3" style={{ width: '300px', margin: '5px' }} />
       </div>
     </div>
   );
