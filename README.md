@@ -25,7 +25,7 @@ O sistema permite que o usuário visualize os destaques do dia, confira o cardá
 
 ### 1. Clonar o repositório  
 ```bash
-git clone https://github.com/seu-usuario/superfood-delivery.git
+git clone https://github.com/DanielViniAssis/DeliveryGlobal
 ````
 ## Backend Laravel
 ```bash
