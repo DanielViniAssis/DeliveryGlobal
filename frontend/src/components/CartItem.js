@@ -1,6 +1,7 @@
 import React from 'react';
 
 const CartItem = ({ item, increase, decrease, remove }) => {
+  console.log("ITEM NO CARRINHO:", item);
  return (
     <div style={{ border: "1px solid #ddd", margin: 5, padding: 5 }}>
       <h4>{item.name}</h4>

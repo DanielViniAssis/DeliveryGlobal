@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable = ['customer_name'];
+    protected $fillable = ['customer_name', 'total'];
 
     public function items()
     {

@@ -4,21 +4,22 @@ import Navbar from './components/NavBar';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
 import Cart from './pages/Cart';
-import { createOrder } from './services/orderService';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
 function App() {
   const [cart, setCart] = useState([]);
 
-  const addToCart = (product) => {
+  const addToCart = (products) => {
     setCart(prev => {
-      const exists = prev.find(item => item.id === product.id);
+      const exists = prev.find(item => item.id === products.id);
       if (exists) {
         return prev.map(item =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === products.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       } else {
-        return [...prev, { ...product, quantity: 1 }];
+        return [...prev, { ...products, quantity: 1 }];
       }
     });
   };
@@ -38,20 +39,28 @@ function App() {
     setCart(prev => prev.filter(item => item.id !== id));
   };
 
-  const checkout = async () => {
+  const checkout = async (total) => {
   const orderData = {
     customer_name: "Daniel",
-    items: cart.map(item => ({ product_id: item.id, quantity: item.quantity })),
+    items: cart.map(item => ({ products_id: item.id, quantity: item.quantity, price: item.price })),
+    total: total,
   };
 
   try {
-    await fetch("http://localhost:8000/api/orders", {
+    const response = await fetch("http://localhost:8000/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderData),
     });
+
+    if (!response.ok) {
+      throw new Error("Erro na requisição: " + response.status);
+    }
+
+    const data = await response.json();
     setCart([]);
     alert("Pedido realizado com sucesso!");
+    return data;
   } catch (error) {
     alert("Erro ao finalizar pedido");
   }

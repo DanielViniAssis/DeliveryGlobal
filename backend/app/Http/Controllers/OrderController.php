@@ -23,7 +23,7 @@ class OrderController extends Controller
         $request->validate([
             'customer_name' => 'required|string|max:255',
             'items' => 'required|array|min:1',
-            'items.*.product_id' => 'required|integer|exists:products,id',
+            'items.*.products_id' => 'required|integer|exists:products,id',
             'items.*.quantity' => 'required|integer|min:1',
         ]);
 
@@ -31,24 +31,26 @@ class OrderController extends Controller
         $order = Order::create([
             'customer_name' => $request->input('customer_name'),
         ]);
-
+        
+        $orderTotal = 0;
         // Cria itens
         foreach ($request->input('items') as $item) {
-            $product = Product::find($item['product_id']);
+            $product = Product::find($item['products_id']);
             if ($product) {
                 $quantity = $item['quantity'];
                 $price = $product->price;
-                $total = $quantity * $price;
+                $itemTotal = $quantity * $price;
+
+                $orderTotal += $itemTotal;
                 OrderItem::create([
                     'order_id' => $order->id,
-                    'product_id' => $product->id,
+                    'products_id' => $product->id,
                     'quantity' => $item['quantity'],
                     'price' => $product->price,
-                    'total' => $total, 
+                    'total' => $itemTotal, 
                 ]);
             }
         }
-        $orderTotal = $order->items()->sum('total');
         $order->update(['total' => $orderTotal]);
 
         return response()->json($order->load('items.product'), 201);
