@@ -4,6 +4,13 @@ Projeto Full Stack de um sistema de delivery online.
 
 O sistema permite que o usuário visualize os destaques do dia, confira o cardápio com produtos disponíveis e gerencie seu carrinho de compras até a finalização do pedido.  
 
+<img width="1600" height="748" alt="image" src="https://github.com/user-attachments/assets/9eae99be-3224-486d-b0e3-2b8f76c62862" />
+
+<img width="1600" height="724" alt="image" src="https://github.com/user-attachments/assets/d03be35f-1405-4ed6-b460-2f8ccafff858" />
+
+
+
+
 ---
 
 ## 💻 Tecnologias  
