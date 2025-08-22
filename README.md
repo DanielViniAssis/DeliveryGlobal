@@ -26,6 +26,8 @@ cd backend
 composer install
 cp .env.example .env
 php artisan migrate
+php artisan db:seed --class=ProductSeeder
+php artisan db:seed --class=PromoSeeder  
 php artisan serve
 ````
 ## Frontend 
